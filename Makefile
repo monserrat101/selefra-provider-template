@@ -12,6 +12,7 @@ install_selefra_terraform_provider_scaffolding::
 generate_selefra_provider::
 	rm -rf ./tables
 	rm -rf ./provider
+	rm -rf ./main.go
 	./bin/selefra-terraform-provider-scaffolding terraform-provider --url ${TERRAFORM_PROVIDER}
 
 clean::
