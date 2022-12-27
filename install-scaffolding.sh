@@ -82,8 +82,24 @@ esac
 
 # build download url
 latest_response=`curl 'https://api.github.com/repos/selefra/selefra-terraform-provider-scaffolding/releases/latest'`
-latest_version=`echo ${latest_response} | grep -oP '"tag_name": "v\d+.\d+.\d+"' | grep -oP 'v\d+.\d+.\d+' | head -n1`
-latest_version_num=`echo ${latest_response} | grep -oP '"tag_name": "v\d+.\d+.\d+"' | grep -oP '\d+.\d+.\d+' | head -n1`
+if [[ "$latest_response" == *"requests get a higher rate limit"* ]]; then
+    >&2 say_red "We're sorry, But it seems the GitHub API request rate is maxed out, please try again later!"
+    exit 1
+fi
+case $(uname) in
+    "Linux")
+      latest_version=`echo ${latest_response} | grep -oP '"tag_name": "v\d+.\d+.\d+"' | grep -oP 'v\d+.\d+.\d+' | head -n1`
+      latest_version_num=`echo ${latest_response} | grep -oP '"tag_name": "v\d+.\d+.\d+"' | grep -oP '\d+.\d+.\d+' | head -n1`
+      ;;
+    "Darwin") OS="darwin"
+        latest_version=`echo ${latest_response} | grep -oe '"tag_name":\s*"v\d.\d.\d"' | grep -oe 'v\d.\d.\d' | head -n1`
+        latest_version_num=`echo ${latest_response} | grep -oe '"tag_name":\s*"v\d.\d.\d"' | grep -oe '\d.\d.\d' | head -n1`
+        ;;
+    *)
+        print_unsupported_platform
+        exit 1
+        ;;
+esac
 if [ "$latest_version" = "" ]
 then
         >&2 say_red "No available release found"
