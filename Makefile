@@ -1,21 +1,30 @@
 
 
-check_params:
-	@if test -z "${TERRAFORM_PROVIDER}"; then echo "TERRAFORM_PROVIDER not set, example: https://github.com/hashicorp/terraform-provider-aws"; exit 1; fi
+# ------------------------------------------------- --------------------------------------------------------------------
 
-generate:: check_params install_selefra_terraform_provider_scaffolding generate_selefra_provider
+init:: install_selefra_terraform_provider_scaffolding
+	export TERRAFORM_PROVIDER_URL=${TERRAFORM_PROVIDER}
+	./bin/selefra-terraform-provider-scaffolding init
 
 install_selefra_terraform_provider_scaffolding::
 	chmod u+x ./install-scaffolding.sh
 	./install-scaffolding.sh
 
-generate_selefra_provider::
-	rm -rf ./tables
-	rm -rf ./provider
-	rm -rf ./main.go
-	./bin/selefra-terraform-provider-scaffolding terraform-provider --url ${TERRAFORM_PROVIDER}
+# ------------------------------------------------- --------------------------------------------------------------------
+
+test:: generate
+	export SELEFRA_TEST_TABLES=${TABLES}
+	go run test ./resources
+
+build:: generate
+	go build
+
+generate::
+	export TERRAFORM_PROVIDER_URL=${TERRAFORM_PROVIDER}
+	./bin/selefra-terraform-provider-scaffolding generate
 
 clean::
+	rm -rf ./resources
 	rm -rf ./bin
 
 help::
@@ -23,4 +32,10 @@ help::
  	sed "s/\(.\+\):\s*\(.*\) #\s*\(.*\)/`printf "\033[93m"`\1`printf "\033[0m"`	\3 [\2]/" | \
  	expand -t20
 
-test::
+# ------------------------------------------------- --------------------------------------------------------------------
+
+
+
+
+
+
