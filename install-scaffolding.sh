@@ -92,8 +92,8 @@ case $(uname) in
       latest_version_num=`echo ${latest_response} | grep -oP '"tag_name": "v\d+.\d+.\d+"' | grep -oP '\d+.\d+.\d+' | head -n1`
       ;;
     "Darwin") OS="darwin"
-        latest_version=`echo ${latest_response} | grep -oe '"tag_name":\s*"v\d.\d.\d"' | grep -oe 'v\d.\d.\d' | head -n1`
-        latest_version_num=`echo ${latest_response} | grep -oe '"tag_name":\s*"v\d.\d.\d"' | grep -oe '\d.\d.\d' | head -n1`
+        latest_version=`echo ${latest_response} | grep -oe '"tag_name":\s*"v\d.\d.\d\d"' | grep -oe 'v\d.\d.\d\d' | head -n1`
+        latest_version_num=`echo ${latest_response} | grep -oe '"tag_name":\s*"v\d.\d.\d\d"' | grep -oe '\d.\d.\d\d' | head -n1`
         ;;
     *)
         print_unsupported_platform
