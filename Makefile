@@ -22,7 +22,7 @@ build:: generate
 generate::
 	 export TERRAFORM_PROVIDER_URL=${TERRAFORM_PROVIDER}
 	 ./bin/selefra-terraform-provider-scaffolding generate
-	 mv ./go.mod ./resources/go.mod
+	 cp ./go.mod ./resources/go.mod
 	 cd ./resources
 	 go mod tidy
 	 cd -
