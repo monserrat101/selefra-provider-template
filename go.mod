@@ -1,6 +1,6 @@
 module github.com/selefra/selefra-provider-template
 
-go 1.18
+go 1.19
 
 require github.com/selefra/selefra-provider-sdk v0.0.17-0.20221230090645-fbd690e2db41
 
