@@ -1,6 +1,6 @@
 # ------------------------------------------------- --------------------------------------------------------------------
 
-init::
+init:: install_selefra_terraform_provider_scaffolding
 	 export TERRAFORM_PROVIDER_URL=${TERRAFORM_PROVIDER}
 	 ./bin/selefra-terraform-provider-scaffolding init
 
