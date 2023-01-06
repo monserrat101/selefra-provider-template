@@ -2,7 +2,7 @@ module github.com/selefra/selefra-provider-template
 
 go 1.19
 
-require github.com/selefra/selefra-provider-sdk v0.0.17-0.20221230090645-fbd690e2db41
+require github.com/selefra/selefra-provider-sdk v0.0.18-0.20230106133742-08876f81b574
 
 require (
 	github.com/emirpasic/gods v1.18.1 // indirect
