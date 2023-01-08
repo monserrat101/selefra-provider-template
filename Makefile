@@ -12,9 +12,7 @@ install_selefra_terraform_provider_scaffolding::
 
 test:: generate
 	 export SELEFRA_TEST_TABLES=${TABLES}
-	 cd ./resources
-	 go run test
-	 cd -
+	 go test  resources/*.go
 
 build:: generate
 	 go build
@@ -22,10 +20,8 @@ build:: generate
 generate::
 	 export TERRAFORM_PROVIDER_URL=${TERRAFORM_PROVIDER}
 	 ./bin/selefra-terraform-provider-scaffolding generate
-	 cp ./go.mod ./resources/go.mod
-	 cd ./resources
 	 go mod tidy
-	 cd -
+
 
 clean::
 	rm -rf ./resources
