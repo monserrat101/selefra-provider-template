@@ -51,7 +51,7 @@ trap at_exit EXIT
 print_unsupported_platform() {
     >&2 say_red "error: We're sorry, but it looks like Selefra is not supported on your platform"
     >&2 say_red "       We support 64-bit versions of Linux and macOS and are interested in supporting"
-    >&2 say_red "       more platforms.  Please open an issue at https://github.com/selefra/selefra-terraform-provider-scaffolding"
+    >&2 say_red "       more platforms.  Please open an issue at https://github.com/selefra/selefra/issues"
     >&2 say_red "       and let us know what platform you're using!"
 }
 
