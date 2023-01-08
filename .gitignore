@@ -465,3 +465,7 @@ MigrationBackup/
 FodyWeavers.xsd
 
 ./bin/*
+
+# This is a cache of configuration files to keep the underlying scaffolding from doing repetitive work and slowing things down.
+# Try not to upload this file to the repository. If you do upload, make sure it does not contain sensitive information about config
+.selefra_terraform_scaffolding_config.json
