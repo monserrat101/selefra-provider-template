@@ -57,5 +57,5 @@ jobs:
           SELEFRA_TOKEN: ${{ secrets.SELEFRA_TOKEN }}
         run: |
           cd /tmp/ && git clone https://${SELEFRA_TOKEN}@github.com/selefra/registry.git && cd registry/ && cp $GITHUB_WORKSPACE/.github/scripts/registry.sh . \
-          && cp $GITHUB_WORKSPACE/dist/selefra-provider-REPLACE-ME-TO-YOU-SELF-PROVIDER-NAME_*_checksums.txt . && bash registry.sh ${{ steps.release.outputs.version }} && cd provider/REPLACE-ME-TO-YOU-SELF-PROVIDER-NAME/ && git config --global user.name "bot" \
-          && git config --global user.email "bot@selefra.io" && git add . && git commit -m "update REPLACE-ME-TO-YOU-SELF-PROVIDER-NAME provider to ${{ steps.release.outputs.version }}" && git push
+          && cp $GITHUB_WORKSPACE/dist/selefra-provider-REPLACE-ME-TO-YOUR-PROVIDER-NAME_*_checksums.txt . && bash registry.sh ${{ steps.release.outputs.version }} && cd provider/REPLACE-ME-TO-YOUR-PROVIDER-NAME/ && git config --global user.name "bot" \
+          && git config --global user.email "bot@selefra.io" && git add . && git commit -m "update REPLACE-ME-TO-YOUR-PROVIDER-NAME provider to ${{ steps.release.outputs.version }}" && git push
