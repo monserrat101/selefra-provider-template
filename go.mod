@@ -1,4 +1,4 @@
-module github.com/selefra/selefra-provider-template
+module github.com/selefra/selefra-provider-REPLACE-ME-TO-YOUR-PROVIDER-NAME
 
 go 1.19
 
